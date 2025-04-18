@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    path: apps
+    path: my-apps
     repoURL: https://github.com/deegbo/apps-appset.git
     targetRevision: HEAD
   destination:
