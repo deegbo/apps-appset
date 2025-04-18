@@ -8,13 +8,13 @@ spec:
       elements:
         - cluster: k3s-cluster2
           url: https://10.10.5.15:6443
-          path: cluster/k3s-cluster2
+          path: clusters/k3s-cluster2
         - cluster: k3s-cluster1
           url: https://10.10.10.5:6443
-          path: cluster/k3s-cluster1
+          path: clusters/k3s-cluster1
         - cluster: k3s-laptop
           url: https://192.168.1.5:6443
-          path: cluster/k3s-laptop
+          path: clusters/k3s-laptop
   template:
     metadata:
       name: '{{cluster}}-apps'
@@ -22,8 +22,8 @@ spec:
       project: default
       source:
         repoURL: https://github.com/deegbo/apps-appset.git
-        targetRevision: main
-        path: argocd-appsets/{{cluster}}
+        targetRevision: HEAD
+        path: '{{path}}/apps'
       destination:
         server: '{{url}}'
         namespace: default
