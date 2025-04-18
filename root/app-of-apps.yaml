@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/deegbo/apps-appset.git
     targetRevision: HEAD
-    path: /root/apps 
+    path: root/apps 
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
