@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apache
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    chart: apache
+    targetRevision: 11.3.5
+    helm:
+      valueFiles:
+        - apache-values.yaml
+  destination:
+    server: https://10.10.5.15:6443
+    namespace: apache
+  syncPolicy:
+    automated: {}
