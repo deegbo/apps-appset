@@ -6,9 +6,11 @@ metadata:
 spec:
   project: default
   source:
-    path: my-apps/
     repoURL: https://github.com/deegbo/apps-appset.git
-    targetRevision: HEAD
+    targetRevision: main
+    path: my-apps/                 # Folder where child Applications live
+    directory:
+      recurse: true             # Apply all YAMLs inside recursively
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
