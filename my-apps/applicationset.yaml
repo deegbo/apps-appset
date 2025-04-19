@@ -1,3 +1,4 @@
+---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -7,10 +8,10 @@ spec:
   - list:
       elements:
         - cluster: k3s-cluster2
-          url: https://10.10.5.15:6443
+          url: https://k3s-tester2.nickker.io:6443
           path: clusters/k3s-cluster2
         - cluster: k3s-cluster1
-          url: https://10.10.10.5:6443
+          url: https://k3s-master1.adamker.io:6443
           path: clusters/k3s-cluster1
         - cluster: k3s-laptop
           url: https://192.168.1.5:6443
