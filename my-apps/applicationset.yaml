@@ -15,7 +15,7 @@ spec:
           path: clusters/k3s-cluster1
         - cluster: k3s-laptop
           url: https://192.168.1.5:6443
-          path: clusters/k3s-laptop/apps
+          path: clusters/k3s-laptop
   template:
     metadata:
       name: '{{cluster}}-apps'
