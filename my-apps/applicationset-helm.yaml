@@ -62,7 +62,7 @@ spec:
             # valuesFiles:
             #   - ../../../helm-apps/{{releaseName}}/values.yaml
       destination:
-        server: '{{url}'
+        server: '{{url}}'
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
