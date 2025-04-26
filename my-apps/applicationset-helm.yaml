@@ -9,31 +9,37 @@ spec:
     - list:
         elements:
           - cluster: k3s-cluster2
+            url: https://192.168.1.51:6443
             namespace: apache-k3s-cluster2
             releaseName: apache
             chartName: bitnami/apache
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster2
+            url: https://192.168.1.51:6443
             namespace: prometheus-k3s-cluster2
             releaseName: prometheus
             chartName: prometheus-community/prometheus
             repoURL: https://prometheus-community.github.io/helm-charts
           - cluster: k3s-cluster1
+            url: https://192.168.1.49:6443
             namespace: apache-k3s-cluster1
             releaseName: apache
             chartName: bitnami/apache
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster1
+            url: https://192.168.1.49:6443
             namespace: prometheus-k3s-cluster1
             releaseName: prometheus
             chartName: prometheus-community/prometheus
             repoURL: https://prometheus-community.github.io/helm-charts
           - cluster: k3s-cluster3
+            url: https://192.168.1.50:6443
             namespace: apache-k3s-cluster3
             releaseName: apache
             chartName: bitnami/apache
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster3
+            url: https://192.168.1.50:6443
             namespace: prometheus-k3s-cluster3
             releaseName: prometheus
             chartName: prometheus-community/prometheus
@@ -56,7 +62,7 @@ spec:
             # valuesFiles:
             #   - ../../../helm-apps/{{releaseName}}/values.yaml
       destination:
-        server: '{{cluster}}'  # This is the ArgoCD cluster name
+        server: '{{url'  # This is the ArgoCD cluster name
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
