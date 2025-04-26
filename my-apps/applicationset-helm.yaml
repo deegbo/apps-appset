@@ -62,7 +62,7 @@ spec:
             # valuesFiles:
             #   - ../../../helm-apps/{{releaseName}}/values.yaml
       destination:
-        server: '{{url'  # This is the ArgoCD cluster name
+        server: '{{url}'
         namespace: '{{namespace}}'
       syncPolicy:
         automated:
