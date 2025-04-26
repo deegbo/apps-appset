@@ -1,0 +1,64 @@
+# applicationset-helm.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-apps
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: k3s-cluster2
+            namespace: apache-k3s-cluster2
+            releaseName: apache
+            chartName: bitnami/apache
+            repoURL: https://charts.bitnami.com/bitnami
+          - cluster: k3s-cluster2
+            namespace: prometheus-k3s-cluster2
+            releaseName: prometheus
+            chartName: prometheus-community/prometheus
+            repoURL: https://prometheus-community.github.io/helm-charts
+          - cluster: k3s-cluster1
+            namespace: apache-k3s-cluster1
+            releaseName: apache
+            chartName: bitnami/apache
+            repoURL: https://charts.bitnami.com/bitnami
+          - cluster: k3s-cluster1
+            namespace: prometheus-k3s-cluster1
+            releaseName: prometheus
+            chartName: prometheus-community/prometheus
+            repoURL: https://prometheus-community.github.io/helm-charts
+          - cluster: k3s-cluster3
+            namespace: apache-k3s-cluster3
+            releaseName: apache
+            chartName: bitnami/apache
+            repoURL: https://charts.bitnami.com/bitnami
+          - cluster: k3s-cluster3
+            namespace: prometheus-k3s-cluster3
+            releaseName: prometheus
+            chartName: prometheus-community/prometheus
+            repoURL: https://prometheus-community.github.io/helm-charts
+  template:
+    metadata:
+      name: '{{releaseName}}-{{cluster}}'
+    spec:
+      project: default
+      source:
+        chart: '{{chartName}}'
+        repoURL: '{{repoURL}}'
+        targetRevision: latest
+        helm:
+          releaseName: '{{releaseName}}'
+          values: |
+            image:
+              pullPolicy: IfNotPresent
+            # Or pull in your custom values via valuesFiles:
+            # valuesFiles:
+            #   - ../../../helm-apps/{{releaseName}}/values.yaml
+      destination:
+        server: '{{cluster}}'  # This is the ArgoCD cluster name
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
