@@ -13,7 +13,7 @@ spec:
             namespace: apache-k3s-cluster2
             releaseName: apache
             chartName: bitnami/apache
-            targetRevision: 11.3.5
+            targetRevision: 11.3.6
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster2
             url: https://192.168.1.51:6443
@@ -27,7 +27,7 @@ spec:
             namespace: apache-k3s-cluster1
             releaseName: apache
             chartName: bitnami/apache
-            targetRevision: 11.3.5
+            targetRevision: 11.3.6
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
@@ -41,7 +41,7 @@ spec:
             namespace: apache-k3s-cluster3
             releaseName: apache
             chartName: bitnami/apache
-            targetRevision: 11.3.5
+            targetRevision: 11.3.6
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster3
             url: https://192.168.1.50:6443
