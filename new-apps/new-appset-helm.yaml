@@ -1,0 +1,48 @@
+# applicationset-helm.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: helm-apps
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - cluster: k3s-cluster1
+            url: https://192.168.1.49:6443
+            namespace: apache-k3s-cluster1
+            releaseName: apache
+            chartName: bitnami/apache
+            targetRevision: 11.3.6
+            repoURL: https://charts.bitnami.com/bitnami
+          - cluster: k3s-cluster1
+            url: https://192.168.1.49:6443
+            namespace: prometheus-k3s-cluster1
+            releaseName: prometheus
+            chartName: prometheus-community/kube-prometheus-stack
+            targetRevision: 70.7.0
+            repoURL: https://prometheus-community.github.io/helm-charts
+  template:
+    metadata:
+      name: '{{releaseName}}-{{cluster}}'
+    spec:
+      project: default
+      source:
+        chart: '{{chartName}}'
+        repoURL: '{{repoURL}}'
+        targetRevision: '{{targetRevision}}'
+        helm:
+          releaseName: '{{releaseName}}'
+          values: |
+            image:
+              pullPolicy: IfNotPresent
+            # Or pull in your custom values via valuesFiles:
+            # valuesFiles:
+            #   - ../../../helm-apps/{{releaseName}}/values.yaml
+      destination:
+        server: '{{url}}'
+        namespace: '{{namespace}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true

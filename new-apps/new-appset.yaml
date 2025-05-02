@@ -1,0 +1,28 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argocd-appsets-test
+spec:
+  generators:
+  - list:
+      elements:
+        - cluster: k3s-cluster1
+          url: https://192.168.1.49:6443
+          path: clusters/k3s-cluster1
+  template:
+    metadata:
+      name: '{{cluster}}-apps'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/deegbo/apps-appset.git
+        targetRevision: HEAD
+        path: '{{path}}/apps'
+      destination:
+        server: '{{url}}'
+        namespace: default
+      syncPolicy:
+        automated:
+          selfHeal: true
+          prune: true
