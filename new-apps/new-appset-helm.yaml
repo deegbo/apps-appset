@@ -17,7 +17,7 @@ spec:
             helm:
               values: |
                  image:
-                   tag: 1.4.1-debian-12-r14
+                   tag: 1.28.0-debian-12-r0
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
