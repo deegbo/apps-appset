@@ -12,16 +12,14 @@ spec:
             url: https://192.168.1.49:6443
             namespace: apache-k3s-cluster1
             releaseName: apache
-            #chartName: bitnami/apache
-            chart: apache
+            chartName: apache
             targetRevision: 11.3.6
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
             namespace: prometheus-k3s-cluster1
             releaseName: prometheus
-            #chartName: prometheus-community/kube-prometheus-stack
-            chart: kube-prometheus-stack
+            chartName: kube-prometheus-stack
             targetRevision: 70.7.0
             repoURL: https://prometheus-community.github.io/helm-charts
   template:
