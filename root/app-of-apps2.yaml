@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: root-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/deegbo/apps-appset.git
+    targetRevision: main
+    path: new-apps/                 # Folder where child Applications live
+    directory:
+      recurse: true             # Apply all YAMLs inside recursively
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+
+      
