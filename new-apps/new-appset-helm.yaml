@@ -12,8 +12,8 @@ spec:
             url: https://192.168.1.49:6443
             namespace: apache
             releaseName: apache
-            chartName: apache
-            targetRevision: 11.3.6
+            chartName: nginx
+            targetRevision: 20.0.0
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
