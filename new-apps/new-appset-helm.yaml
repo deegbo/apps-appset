@@ -10,14 +10,14 @@ spec:
         elements:
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
-            namespace: apache-k3s-cluster1
+            namespace: apache
             releaseName: apache
             chartName: apache
             targetRevision: 11.3.6
             repoURL: https://charts.bitnami.com/bitnami
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
-            namespace: prometheus-k3s-cluster1
+            namespace: monitoring
             releaseName: prometheus
             chartName: kube-prometheus-stack
             targetRevision: 70.7.0
