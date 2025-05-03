@@ -12,42 +12,42 @@ spec:
             url: https://192.168.1.51:6443
             namespace: apache-k3s-cluster2
             releaseName: apache
-            chartName: bitnami/apache
-            targetRevision: 11.3.6
-            repoURL: https://charts.bitnami.com/bitnami
+            chartName: apache
+            targetRevision: 4.2.0
+            repoURL: https://cloudnativeapp.github.io/charts/curated/
           - cluster: k3s-cluster2
             url: https://192.168.1.51:6443
             namespace: prometheus-k3s-cluster2
             releaseName: prometheus
             targetRevision: 70.7.0
-            chartName: prometheus-community/kube-prometheus-stack
+            chartName: kube-prometheus-stack
             repoURL: https://prometheus-community.github.io/helm-charts
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
             namespace: apache-k3s-cluster1
             releaseName: apache
-            chartName: bitnami/apache
-            targetRevision: 11.3.6
-            repoURL: https://charts.bitnami.com/bitnami
+            chartName: apache
+            targetRevision: 4.2.0
+            repoURL: https://cloudnativeapp.github.io/charts/curated/
           - cluster: k3s-cluster1
             url: https://192.168.1.49:6443
             namespace: prometheus-k3s-cluster1
             releaseName: prometheus
-            chartName: prometheus-community/kube-prometheus-stack
+            chartName: kube-prometheus-stack
             targetRevision: 70.7.0
             repoURL: https://prometheus-community.github.io/helm-charts
           - cluster: k3s-cluster3
             url: https://192.168.1.50:6443
             namespace: apache-k3s-cluster3
             releaseName: apache
-            chartName: bitnami/apache
-            targetRevision: 11.3.6
-            repoURL: https://charts.bitnami.com/bitnami
+            chartName: apache
+            targetRevision: 4.2.0
+            repoURL: https://cloudnativeapp.github.io/charts/curated/
           - cluster: k3s-cluster3
             url: https://192.168.1.50:6443
             namespace: prometheus-k3s-cluster3
             releaseName: prometheus
-            chartName: prometheus-community/kube-prometheus-stack
+            chartName: kube-prometheus-stack
             targetRevision: 70.7.0
             repoURL: https://prometheus-community.github.io/helm-charts
   template:
