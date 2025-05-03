@@ -13,7 +13,7 @@ spec:
             namespace: apache
             releaseName: apache
             chartName: apache
-            targetRevision: 11.3.3
+            targetRevision: 11.3.4
             helm:
               values: |
                  image:
