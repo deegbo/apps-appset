@@ -9,7 +9,8 @@ spec:
       elements:
         - cluster: k3s-cluster1
           url: https://192.168.1.49:6443
-          path: clusters/k3s-cluster1          
+          path: clusters/k3s-cluster1 
+          namespace: default         
   template:
     metadata:
       name: '{{cluster}}-apps'
