@@ -21,7 +21,7 @@ spec:
 
   template:
     metadata:
-      name: '{{ .nameNormalized }}-guestbook'
+      name: '{{ engineering-dev }}-guestbook'
     spec:
       project: "default"
       source:
