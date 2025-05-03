@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: guestbook
+spec:
+  generators:
+  - list:
+      elements:
+        - cluster: k3s-cluster1
+          url: https://192.168.1.49:6443 
+      template:
+        metadata: {}
+        spec:
+          project: "default"
+          source:
+            targetRevision: HEAD
+            repoURL: https://github.com/argoproj/argo-cd.git
+            # New path value is generated here:
+            path: 'applicationset/examples/template-override/{{ .nameNormalized }}-override'
+          destination: {}
+
+  template:
+    metadata:
+      name: '{{ .nameNormalized }}-guestbook'
+    spec:
+      project: "default"
+      source:
+        repoURL: https://github.com/argoproj/argo-cd.git
+        targetRevision: HEAD
+        # This 'default' value is not used: it is replaced by the generator's template path, above
+        path: applicationset/examples/template-override/default
+      destination:
+        server: '{{ .server }}'
+        namespace: guestbook
