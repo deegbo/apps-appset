@@ -8,12 +8,12 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: apache
-    targetRevision: 11.3.5
+    targetRevision: 11.3.4
     helm:
       valueFiles:
         - apache-values.yaml
   destination:
-    server: https://10.10.10.5:6443
+    server: https://1192.168.1.49:6443
     namespace: apache
   syncPolicy:
     automated: {}
