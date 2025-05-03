@@ -30,5 +30,5 @@ spec:
         # This 'default' value is not used: it is replaced by the generator's template path, above
         path: applicationset/examples/template-override/default
       destination:
-        server: '{{ .url }}'
+        server: '{{ url }}'
         namespace: guestbook
